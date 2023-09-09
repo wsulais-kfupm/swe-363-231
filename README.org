@@ -1,0 +1,5 @@
+#+title: 231-SWE363: Exercises
+
+This repo contains the solutions for the exercises posted for SWE363 in term 231.
+
+You can [[http://wsulais-kfupm.github.io/swe-363-231/index.html][view the solved examples live]]
