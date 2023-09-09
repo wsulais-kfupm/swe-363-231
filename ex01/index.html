@@ -1,0 +1,201 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CJK Input Methods</title>
+    <meta name="description" content="Describing CJK input methods in detail">
+    <meta name="author" content="Wael Sulais">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="chinese ime cjk input asian mandarin pinyin cangjie zhengma" />
+
+    <link href="main.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">
+            You are using an <strong>outdated</strong> browser. Please
+            <a href="http://browsehappy.com/">upgrade your browser</a> to improve
+            your experience.
+            </p>
+        <![endif]-->
+    <nav class="horizontal center-container prose-like">
+        <ul class="">
+            <li> <a href="index.html">home</a> </li>
+            <li> <a href="phonetic.html">phonetic</a> </li>
+            <li> <a href="shape.html">shape based</a> </li>
+            <li> <a href="stroke.html">stroke</a> </li>
+            <li> <a href="about.html">about us</a> </li>
+        </ul>
+    </nav>
+
+    <article class="prose m-2 center-container">
+        <h1 class="text-center">CJK Input Methods</h1>
+
+        <summary>
+            This site contains information about the various types of input methods available for CJK languages
+        </summary>
+
+        <figure class="">
+            <img src="images/hanzi.jpg" alt="Picture of simplified hanzi on a black plaque" class="mx-auto" />
+            <figcap class="figure-caption">The letters of the CJK world, pictured from Mainland China
+            </figcap>
+        </figure>
+
+        <h2>Han Unification</h2>
+
+
+        <p>
+            Due to the breadth of the CJK world, regional character variants are to be expected. Furthermore,
+            simplifications
+            and/or writing reformations such as the
+            <a href="https://wikiless.tiekoetter.com/wiki/Simplified_Chinese_characters?lang=en">Chinese
+                Simplification</a>
+            or
+            <a href="https://wikipedia.com/wiki/Japanese_script_reform">Japanese script reform</a> have caused the
+            characters to diverge.
+        </p>
+
+        <figure class="">
+            <img src="images/han-uni.svg" alt="The character '返' displayed in various CJK regions" class="mx-auto" />
+            <figcap class="figure-caption">
+                Differences for the same Unicode character (U+8FD4) in regional versions of Source Han Sans font
+            </figcap>
+        </figure>
+
+        <p>
+            The unicode consortium faced the issue of trying to map these different variants
+            <strong>especially</strong>
+            when merging <em>existing encoding schemes</em>.
+        </p>
+
+        <h3>In Web</h3>
+
+        <p>
+            HTML provides utilities to specify the language and region of the text via the <code>lang</code> global
+            attribute. For example,
+        </p>
+        <pre> <code> &lt;span lang="zh-CN"&gt; <span lang="zh-CN">返</span> &lt;/span&gt; </code> </pre>
+        <p>
+            would display the character「<span lang="zh-CN">返</span>」how it would be in Mainland China.
+        </p>
+
+        <p>
+            Pictured below is table represntation of the previous figure. Depending on your browser, installed fonts,
+            OS-configuration. It may not display correctly.
+        </p>
+        <table class="hanzi-table text-center align-middle border-0">
+            <caption class="figure-caption">HTML comparision of character regional
+                variants</caption>
+
+            <thead>
+                <tr class="even-column">
+                    <td rowspan="2" class="align-middle" lang="zh-CN">簡体中文</td>
+                    <td lang="zh-TW">正體中文</td>
+                    <td lang="zh-HK">正體中文</td>
+                    <td rowspan="2" class="align-middle" lang="ja-JP">日本語</td>
+                    <td rowspan="2" class="align-middle" lang="ko-KR">한국어</td>
+                </tr>
+                <tr class="odd-column">
+                    <td lang="zh-TW">臺灣</td>
+                    <td lang="zh-HK">香港</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="even-column main-hanzi-row">
+                    <td class="p-2" lang="zh-CN">返</td>
+                    <td class="p-2" lang="zh-TW">返</td>
+                    <td class="p-2" lang="zh-HK">返</td>
+                    <td class="p-2" lang="ja-JP">返</td>
+                    <td class="p-2" lang="ko-KR">返</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr class="even-column">
+                    <td class="align-middle" rowspan="2">Simplified Chinese</td>
+                    <td class="align-middle">Traditional Chinese</td>
+                    <td class="align-middle">Traditional Chinese</td>
+                    <td class="align-middle" rowspan="2">Japanese</td>
+                    <td class="align-middle" rowspan="2">Korean</td>
+                </tr>
+                <tr class="odd-column">
+                    <td lang="zh-TW">Taiwan</td>
+                    <td lang="zh-HK">Hong Kong</td>
+                </tr>
+            </thead>
+        </table>
+
+        <h2>Input Methods</h2>
+
+        <table class="table">
+            <caption class="figure-caption">
+                Comparision of various CJK input methods
+            </caption>
+            <thead class="bg-black">
+                <tr>
+                    <th class="border-solid border-1 border-slate-400 px-1 py-2 text-center align-middle text-white"
+                        scope="col">
+                        Input Method
+                    </th>
+                    <th class="border-solid border-1 border-slate-400 px-1 py-2 text-center align-middle text-white"
+                        scope="col">
+                        Code Length
+                    </th>
+                    <th class="border-solid border-1 border-slate-400 px-1 py-2 text-center align-middle text-white"
+                        scope="col">
+                        Intuitiveness
+                    </th>
+                    <th class="border-solid border-1 border-slate-400 px-1 py-2 text-center align-middle text-white"
+                        scope="col">
+                        Implementation
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-gray-50 text-center">
+                <tr>
+
+                    <th class="align-middle" scope="row"><a href="phonetic.html">Phonetic</a></th>
+                    <td class="align-middle">Variable (usu. Long)</td>
+                    <td class="align-middle">Very</td>
+                    <td class="align-middle">Difficult</td>
+                </tr>
+                <tr>
+                    <th class="align-middle" scope="row"><a href="shape.html">Shape</a></th>
+                    <td class="align-middle">usu. Fixed</td>
+                    <td class="align-middle">Not</td>
+                    <td class="align-middle">Easy</td>
+                </tr>
+                <tr>
+                    <th class="align-middle" scope="row"><a href="stroke.html">Stroke</a></th>
+                    <td class="align-middle">N.A</td>
+                    <td class="align-middle">Very</td>
+                    <td class="align-middle">Very Difficult</td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+    <footer class="horizontal center-container">
+        <ul class="prose-like">
+            <li xmlns:cc="http://creativecommons.org/ns#">
+                <a rel="cc:attributionURL" href="https://github.com/wsulais-kfupm/swe-363-231">This work</a> by
+                <a rel="cc:attributionURL dct:creator" property="cc:attributionName"
+                    href="https://github.com/wsulais-kfupm">Wael Sulais</a> is marked with
+                <a href="http://creativecommons.org/publicdomain/zero/1.0?ref=chooser-v1" target="_blank"
+                    rel="license noopener noreferrer" style="display:inline-block;">CC0 1.0
+                    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                        src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+                    <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                        src="https://mirrors.creativecommons.org/presskit/icons/zero.svg?ref=chooser-v1"></a>
+            </li>
+            <li class="inline mx-1 px-1"> <a href="about.html">contact us</a> </li>
+        </ul>
+    </footer>
+</body>
+
+</html>
