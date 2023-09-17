@@ -1,0 +1,235 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.table {
+    border-collapse: collapse;
+    border: solid 1px slategrey;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.table thead {
+    background-color: white;
+    color: blacke;
+}
+
+.table tbody {
+    /* background-color: rgb(249 250 251); */
+    background-color: black;
+    color: white;
+}
+
+.table thead th {
+    padding: 0.25rem 0.5rem;
+    color: black;
+}
+
+.table th,
+td {
+    text-align: center;
+}
+
+.figure-caption {
+    caption-side: bottom;
+    padding: 0.25rem;
+    text-align: center;
+}
+
+figcap.figure-caption {
+    display: block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.float-figure {
+    display: flex;
+}
+
+.prose {
+    font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        'system-ui',
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        Arial,
+        'Noto Sans',
+        sans-serif,
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        'Noto Color Emoji';
+    max-width: 65ch;
+}
+
+.prose p {
+    line-height: 28px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.prose a {
+    color: white;
+    font-weight: 600;
+}
+
+.prose img {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.max-width {
+    width: 100%;
+}
+
+address a[href^='mailto:']::before {
+    content: '📧 ';
+}
+
+address a[href^='tel:']::before {
+    content: '📞 ';
+}
+
+address a[href^='geo:']::before {
+    content: '📌 ';
+}
+
+.image-link::before {
+    content: '';
+    /* content: url("./images/github/github-mark.svg"); */
+    /* background-image: url("./images/light/github.svg"); */
+    background-size: 1em 1em;
+    vertical-align: baseline;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.25em;
+}
+
+.github::before {
+    background-image: url('./images/light/github.svg');
+}
+
+.linkedin::before {
+    background-image: url('./images/light/linkedin-in.svg');
+}
+
+.prose table {
+    margin: 0 auto;
+}
+
+.prose pre {
+    padding: 1rem 1rem;
+    margin: 0rem 1rem;
+    background-color: #1f2937;
+    color: #e5e7eb;
+    border-radius: 0.375rem;
+}
+
+.prose h1 {
+    font-weight: 800;
+    font-size: 2.25em;
+    margin: 0 0 0.83rem 0;
+    /* margin-bottom: 0.83rem; */
+}
+
+.center-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.horizontal {
+    display: inline;
+    text-align: center;
+}
+
+.horizontal ul {
+    padding-inline-start: 0px;
+}
+
+.horizontal li {
+    display: inline;
+    border-right: solid 1px white;
+    padding: 0 0.25rem;
+}
+
+.horizontal li:last-child {
+    border: solid 0px white;
+}
+
+.prose h1 {
+    text-align: center;
+}
+
+.prose details {
+    border-radius: 1rem;
+    padding: 0.5rem;
+    background-color: #e5e7eb;
+}
+
+.prose-like {
+    font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        'system-ui',
+        'Segoe UI',
+        Roboto,
+        'Helvetica Neue',
+        Arial,
+        'Noto Sans',
+        sans-serif,
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        'Noto Color Emoji';
+}
+
+.prose-like a {
+    text-align: center;
+    color: white;
+    font-weight: 600;
+}
+
+.hanzi-table {
+    background-color: hsl(0 0% 20% / 1);
+    /* border-color: hsl(220deg 13.04% 90.98%); */
+    border-collapse: collapse;
+    /* color: black; */
+}
+
+.hanzi-table td {
+    padding: 0.5rem min(0.75vw, 0.75rem);
+}
+
+.hanzi-table :is(tr, thead, tbody) {
+    border-bottom: solid 2px hsl(220deg 13.04% 30.98%);
+}
+
+.hanzi-table *:last-child {
+    border-bottom: none;
+}
+
+.main-hanzi-row {
+    font-size: max(4rem, min(5vw, 5rem));
+    line-height: 1;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.odd-column *:nth-child(odd) {
+    background-color: hsl(0 0% 10% / 1);
+    /* background-color: rgb(209 213 219); */
+}
+
+.even-column *:nth-child(even) {
+    background-color: hsl(0 0% 10% / 1);
+    /* background-color: rgb(209 213 219); */
+}
