@@ -1,0 +1,29 @@
+#+title: Ex
+
+* Mood board
+
+[[./colors.png]]
+
+** Colors
+Scandinavian, blue-ish hues.
+- Nord
+- Solarized Dark
+  
+** Fonts
+*** Sans                                                             :ATTACH:
+:PROPERTIES:
+:ID:       5d6ddfe9-5677-4956-90f7-9b533b265778
+:END:
+[[https://fonts.google.com/specimen/Yanone+Kaffeesatz][Yanone Kaffeesatz]]
+[[attachment:_20230913_132520Screenshot 2023-09-13 at 1.25.17 PM.png]]
+
+*** Serif
+
+[[https://fonts.google.com/specimen/Imbue][Imbue]]
+[[attachment:_20230913_132744Screenshot 2023-09-13 at 1.27.41 PM.png]]
+
+[[https://fonts.google.com/specimen/DM+Serif+Display][DM Serif Display]]
+
+*** Monospace
+
+[[https://fonts.google.com/specimen/Ubuntu+Mono][Ubuntu Monospace]]
