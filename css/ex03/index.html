@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<title>Stocks</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="stylesheet" href="main.css" />
+		<!-- Place favicon.ico in the root directory -->
+	</head>
+	<script>
+		setTimeout(() => {
+			const elem = document.getElementById("loader");
+			elem.classList.add("loader--done");
+			setTimeout(() => elem.remove(), 1000);
+		}, 2000);
+	</script>
+	<body>
+		<!--[if lt IE 8]>
+			<p class="browserupgrade">
+				You are using an <strong>outdated</strong> browser. Please
+				<a href="http://browsehappy.com/">upgrade your browser</a> to improve
+				your experience.
+			</p>
+		<![endif]-->
+		<div id="loader" class="loader">
+			<img class="loader__image" src="Pulse-1s-200px.svg" />
+		</div>
+		<header>
+			<nav class="appbar">
+				<button>Menu</button>
+				<form method="get" action="search">
+					<input
+						class="appbar__search"
+						type="search"
+						placeholder="Search pools or tokens"
+					/>
+					<a class="gradient-box" href="profile">
+						<img src="images/user.png" alt="User picture" />
+					</a>
+				</form>
+			</nav>
+		</header>
+		<nav class="tabbar">
+			<a class="tabbar__tab tabbar__tab--active" href="/dashboard">Dashboard</a>
+			<a class="tabbar__tab" href="/pools">Pools</a>
+			<a class="tabbar__tab" href="/tokens">Tokens</a>
+			<a class="tabbar__tab" href="/market">Market</a>
+			<a class="tabbar__tab" href="/nft">NFT</a>
+		</nav>
+		<main>
+			<section class="chart">
+				<div>TVL</div>
+				<img class="chart__chart" src="chart-overview.svg" />
+			</section>
+			<section class="chart">
+				<div>TVL</div>
+				<img class="chart__chart" src="chart-overview.svg" />
+			</section>
+			<section class="chart">
+				<div>TVL</div>
+				<img class="chart__chart" src="chart-overview.svg" />
+			</section>
+		</main>
+	</body>
+</html>
