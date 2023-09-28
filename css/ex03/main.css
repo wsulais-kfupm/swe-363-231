@@ -4,6 +4,38 @@
 	src: url(./fonts/ReadexPro.ttf) format("truetype");
 }
 
+:root {
+	--palette-blue-50: #e4f1ff;
+	--palette-blue-100: #bfdbfe;
+	--palette-blue-200: #99c6fc;
+	--palette-blue-300: #76aff8;
+	--palette-blue-400: #619ef5;
+	--palette-blue-500: #558df1;
+	--palette-blue-600: #527fe2;
+	--palette-blue-700: #4d6dce;
+	--palette-blue-800: #495cbb;
+	--palette-blue-800: #403d9a;
+
+	--palette-blue-gray-50: #f8fafc;
+	--palette-blue-gray-200: #e2e8f0;
+	--palette-blue-gray-500: #64748b;
+	--palette-blue-gray-600: #475569;
+	--palette-blue-gray-700: #334155;
+	--palette-blue-gray-800: #1e293b;
+	--palette-blue-gray-900: #0f172a;
+
+	--palette-orange-400: #fb923c;
+
+	--palette-red-400: #f87171;
+	--palette-red-500: #ef4444;
+	--palette-red-700: #b91c1c;
+
+	--palette-white-900: #ffffff;
+
+	--palette-bg-alpha: 10%;
+	--palette-text-main: --palette-white-900;
+}
+
 body {
 	/* Typography/label/large */
 	font-family: Readex Pro;
@@ -69,12 +101,16 @@ body {
 
 	text-align: center;
 	text-decoration: none;
-	color: var(--palette-white-900, #fff);
+	color: var(--palette-text-main);
 }
 
 .tabbar__tab:hover {
 	color: var(--palette-blue-200, #bddbff);
-	background-color: var(--palette-blue-200, #bddbff1c);
+	background-color: color-mix(
+		in srgb,
+		var(--palette-blue-200) var(--palette-bg-alpha),
+		transparent
+	);
 	text-decoration: underline;
 	text-decoration-thickness: 0.25rem;
 	text-decoration-color: var(--palette-blue-200, #bddbff);
@@ -83,10 +119,14 @@ body {
 }
 
 .tabbar__tab:active {
-	color: var(--palette-blue-200, #5b7da5);
-	background-color: var(--palette-blue-200, #80b9ff1c);
+	color: var(--palette-blue-300, #5b7da5);
+	background-color: color-mix(
+		in srgb,
+		var(--palette-blue-400) var(--palette-bg-alpha),
+		transparent
+	);
 	text-decoration: underline;
-	text-decoration-color: var(--palette-blue-200, #80b9ff);
+	text-decoration-color: var(--palette-blue-400, #80b9ff);
 	text-decoration-thickness: 0.25rem;
 	text-underline-offset: 1rem;
 	transition: all 0.125s;
@@ -129,18 +169,26 @@ body {
 
 .navbar__tab:hover .navbar__tab__icon {
 	color: var(--palette-blue-200, #bddbff);
-	background-color: var(--palette-blue-200, #bddbff1c);
+	background-color: color-mix(
+		in srgb,
+		var(--palette-blue-200) var(--palette-bg-alpha),
+		transparent
+	);
 	transition: all 0.25s;
 }
 
 .navbar__tab:active {
-	color: var(--palette-blue-200, #5b7da5);
+	color: var(--palette-blue-400, #5b7da5);
 	transition: all 0.125s;
 }
 
 .navbar__tab:active .navbar__tab__icon {
-	color: var(--palette-blue-200, #5b7da5);
-	background-color: var(--palette-blue-200, #80b9ff1c);
+	color: var(--palette-blue-400, #5b7da5);
+	background-color: color-mix(
+		in srgb,
+		var(--palette-blue-400) var(--palette-bg-alpha),
+		transparent
+	);
 	transition: all 0.125s;
 }
 
@@ -220,13 +268,21 @@ body {
 
 .icon-button:hover {
 	color: var(--palette-blue-200, #bddbff);
-	background-color: var(--palette-blue-200, #bddbff1c);
+	background-color: color-mix(
+		in srgb,
+		var(--palette-blue-200) var(--palette-bg-alpha),
+		transparent
+	);
 	transition: all 0.25s;
 }
 
 .icon-button:active {
-	color: var(--palette-blue-200, #5b7da5);
-	background-color: var(--palette-blue-200, #80b9ff1c);
+	color: var(--palette-blue-400, #5b7da5);
+	background-color: color-mix(
+		in srgb,
+		var(--palette-blue-400) var(--palette-bg-alpha),
+		transparent
+	);
 	transition: all 0.125s;
 }
 
