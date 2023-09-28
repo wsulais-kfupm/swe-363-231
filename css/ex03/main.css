@@ -165,8 +165,12 @@ body {
 	margin: 0 0 0.75rem 0;
 }
 
+.chart__header__profile {
+	height: 3rem;
+}
 .chart__header__details {
-	margin: 0 auto 0 1rem;
+	margin: 0 1rem;
+	flex: 1;
 }
 
 .chart__header__details__subtitle {
@@ -182,6 +186,7 @@ body {
 	font-size: 1.375rem;
 	margin-block-start: 0;
 	margin-block-end: 0;
+	color: white;
 }
 
 .chart__chart {
