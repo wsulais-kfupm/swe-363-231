@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+			}
+
+			.scoreboard {
+				margin: 1rem;
+			}
+
+			.scoreboard > span {
+				margin: 0 1rem;
+			}
+			.scoreboard--heading {
+				display: inline;
+			}
+
+			.board {
+				margin: 1rem;
+			}
+			.cell {
+				font-family: sans-serif;
+				font-size: larger;
+				font-weight: bolder;
+				background-color: beige;
+				width: 100px;
+				height: 100px;
+				border: 1px solid black;
+				text-align: center;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.cell--X,
+			.cell--X:hover {
+				background-color: color-mix(in srgb, blue 10%, beige) !important;
+			}
+
+			.cell--O,
+			.cell--O:hover {
+				background-color: color-mix(in srgb, red 10%, beige) !important;
+			}
+
+			.cell:hover {
+				background-color: blanchedalmond;
+			}
+
+			.row {
+				display: flex;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1 id="turn">Now it's <span>X</span> turn</h1>
+		<!-- Board -->
+		<section class="scoreboard">
+			<h2 class="scoreboard--heading">Score:</h2>
+			<span>X: <span id="score-x">0</span></span>
+			<span>O: <span id="score-o">0</span></span>
+			<span>Draw: <span id="score-draw">0</span></span>
+		</section>
+		<div class="board">
+			<div class="row">
+				<div class="cell cell--x"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+			<div class="row">
+				<div class="cell"></div>
+				<div class="cell"></div>
+				<div class="cell"></div>
+			</div>
+		</div>
+		<aside>
+			<label>
+				<input type="checkbox" id="computer-enabled" checked />
+				Computer Plays?
+			</label>
+			<fieldset id="computer-settings">
+				<label>
+					<input type="checkbox" id="computer-first" />
+					Computer First?
+				</label>
+			</fieldset>
+		</aside>
+		<div>
+			<button onclick="clearBoard()">Reset</button>
+		</div>
+	</body>
+	<script>
+		// decided which turn is it
+		let turn = "X";
+		let gameEnded = null;
+		let score = { x: 0, o: 0, draw: 0 };
+		let computer_settings = { enabled: true, first: false };
+
+		// when we click on a cell add the letter
+		let board = document.getElementsByClassName("board")[0];
+		board.addEventListener("click", cellClicked);
+
+		document
+			.getElementById("computer-enabled")
+			.addEventListener("change", toggleComputer);
+
+		document.getElementById("computer-first").addEventListener("change", () => {
+			computer_settings.first = !computer_settings.first;
+		});
+
+		function toggleComputer(e) {
+			const computer_settings_fieldset =
+				document.getElementById("computer-settings");
+			computer_settings_fieldset.disabled =
+				!computer_settings_fieldset.disabled;
+			computer_settings.enabled = !computer_settings.enabled;
+		}
+
+		function gameState(board1) {
+			return [...board.children].map((r) => [...r.children]);
+		}
+
+		function gameStatus(board) {
+			const state = gameState();
+			// did any of the rows win
+			let horizontals = state.some(
+				(r) =>
+					r[0].innerText !== "" &&
+					r.every((c) => c.innerText === r[0].innerText),
+			);
+			// did any of the columns win
+			let vertical = false;
+			for (var column = 0; column < state.length; column++) {
+				// console.log("checking", column);
+				const start = state[0][column].innerText;
+				if (!start) {
+					continue;
+				}
+				vertical = true;
+				for (var row = 0; row < state.length; row++) {
+					vertical = vertical && state[row][column].innerText === start;
+				}
+				// console.log("vertical: ", vertical);
+				if (vertical) {
+					break;
+				}
+			}
+			// did the top left bottom right diagonal win
+			let diagonal_lr =
+				state[0][0].innerText &&
+				[state[0][0], state[1][1], state[2][2]].every(
+					(c) => c.innerText === state[0][0].innerText,
+				);
+			// did the top right bottom left diagonal win
+			let diagonal_rl =
+				state[2][0].innerText &&
+				[state[2][0], state[1][1], state[0][2]].every(
+					(c) => c.innerText === state[2][0].innerText,
+				);
+			// did we fill the board
+			let full = state.every((r) => r.every((c) => c.innerText));
+			console.log(horizontals, vertical, diagonal_lr, diagonal_rl, full);
+			if (horizontals || vertical || diagonal_lr || diagonal_rl) {
+				return "won";
+			} else if (full) {
+				return "draw";
+			}
+		}
+
+		function updateHeader() {
+			header = document.querySelector("#turn");
+			if (gameEnded === "won") {
+				header.innerText = `${turn} has won`;
+			} else if (gameEnded === "draw") {
+				header.innerText = "Draw";
+			} else {
+				header.innerText = `Now it's ${turn} turn`;
+			}
+			document.querySelector("#score-x").innerText = score.x;
+			document.querySelector("#score-o").innerText = score.o;
+			document.querySelector("#score-draw").innerText = score.draw;
+		}
+
+		function playCell(cell) {
+			if (cell.innerText) {
+				return;
+			}
+
+			if (!gameEnded) {
+				// change turn
+				cell.innerText = turn;
+				cell.classList += ` cell--${turn}`;
+			}
+			gameEnded = gameStatus(board);
+			if (gameEnded === "draw") {
+				score.draw++;
+			} else if (gameEnded === "won") {
+				if (turn === "X") {
+					score.x++;
+				} else {
+					score.o++;
+				}
+			} else {
+				turn = turn === "X" ? "O" : "X";
+			}
+			updateHeader();
+		}
+
+		function computerPlay() {
+			if (!gameEnded) {
+				let empty_cells = gameState()
+					.flat()
+					.filter((c) => !c.innerText);
+				let random_idx = Math.floor(Math.random() * empty_cells.length);
+				let random_cell = empty_cells[random_idx];
+				console.log("Computer turn:", random_idx, random_cell);
+				playCell(random_cell);
+			}
+		}
+
+		function cellClicked(event) {
+			let cell = event.target;
+			// If cell is already filled
+			if (cell.innerText) {
+				return;
+			}
+			playCell(cell);
+			if (computer_settings.enabled) {
+				computerPlay();
+			}
+		}
+
+		function clearBoard() {
+			for (const row of gameState(board)) {
+				for (const cell of row) {
+					cell.classList = "cell";
+					cell.innerText = "";
+					turn = "X";
+				}
+			}
+			gameEnded = null;
+			if (computer_settings.enabled && computer_settings.first) {
+				computerPlay();
+			}
+			updateHeader();
+		}
+		clearBoard();
+	</script>
+</html>
