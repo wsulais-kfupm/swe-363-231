@@ -11,25 +11,6 @@
 		<link rel="stylesheet" href="main.css" />
 		<!-- Place favicon.ico in the root directory -->
 	</head>
-	<script>
-		function openNav() {
-			const elem = document.getElementById("sitenav");
-			elem.style.opacity = "100%";
-			elem.style.display = "flex";
-		}
-
-		function closeNav() {
-			const elem = document.getElementById("sitenav");
-			elem.style.opacity = "0";
-			elem.style.display = "none";
-		}
-
-		setTimeout(() => {
-			const elem = document.getElementById("loader");
-			elem.classList.add("loader--done");
-			setTimeout(() => elem.remove(), 1000);
-		}, 2000);
-	</script>
 	<body>
 		<!--[if lt IE 8]>
 			<p class="browserupgrade">
@@ -71,7 +52,7 @@
 					<a class="tabbar__tab" href="/market">سوق</a>
 					<a class="tabbar__tab" href="/nft">NFT</a>
 				</nav>
-				<form class="appbar__search" method="get" action="search">
+				<div class="appbar__search" method="get" action="search">
 					<input
 						class="appbar__search__input"
 						type="search"
@@ -80,7 +61,7 @@
 					<a class="gradient-box" href="profile">
 						<img src="images/user.png" alt="User picture" />
 					</a>
-				</form>
+				</div>
 			</nav>
 		</header>
 		<nav class="sitenav" id="sitenav">
@@ -397,4 +378,5 @@
 			>
 		</nav>
 	</body>
+	<script src="main.js"></script>
 </html>
