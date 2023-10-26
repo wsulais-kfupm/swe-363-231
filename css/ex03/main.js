@@ -21,16 +21,60 @@ function formatNumber(num, precision = 2) {
 	return num;
 }
 
+var CRYPTO_INFOS;
+const CRYPTO_API = "https://api.coingecko.com/api/v3/";
+const DEFAULT_CURRENCY = "USD";
+const CURRENT_LOCALE = document.documentElement.lang;
+const DEFAULT_NUMBER_FORMATTER_OPTIONS = {
+	style: "currency",
+	currency: "USD",
+	notation: "compact",
+	maximumFractionDigits: 1,
+};
+var NUMBER_FORMATTER = new Intl.NumberFormat(
+	CURRENT_LOCALE,
+	DEFAULT_NUMBER_FORMATTER_OPTIONS,
+);
+const DATE_FORMATTER = new Intl.DateTimeFormat(CURRENT_LOCALE, {
+	dateStyle: "short",
+});
+
+async function fill_currencies_list() {
+	const elem = document.getElementById("sitenav__currency");
+	const res = await fetch(CRYPTO_API + "simple/supported_vs_currencies");
+	const json = await res.json();
+	const hcs = json.map(
+		(c) =>
+			`<option value="${c}" ${
+				c === "usd" ? "selected" : ""
+			}>${c.toUpperCase()}</option>`,
+	);
+	console.log(hcs);
+	elem.innerHTML = hcs.join("");
+	elem.addEventListener("change", change_currency);
+}
+
+function change_currency(event) {
+	const selector = event.target;
+	NUMBER_FORMATTER = new Intl.NumberFormat(CURRENT_LOCALE, {
+		...DEFAULT_NUMBER_FORMATTER_OPTIONS,
+		currency: selector.value,
+	});
+	add_crypto_charts(CRYPTO_INFOS);
+}
+
+fill_currencies_list();
+
 function make_crypto_card(info, date = new Date()) {
-	let price = formatNumber(info.total_volume, 1);
-	let date_string = date.toLocaleString();
+	let price = NUMBER_FORMATTER.format(info.total_volume);
+	let date_string = DATE_FORMATTER.format(date);
 	const html = `
 			<section class="chart">
 				<header class="chart__header">
 					<img class="chart__header__profile" alt="${info.symbol}" src="${info.image}" />
 					<div class="chart__header__details">
-						<h2 class="chart__header__details__subtitle">${info.symbol}</h2>
-						<h1 class="chart__header__details__title">$ ${price}</h1>
+						<h2 class="chart__header__details__subtitle" lang="en">${info.symbol}</h2>
+						<h1 class="chart__header__details__title">${price}</h1>
 					</div>
 					<h3 class="chart__header__details__date">${date_string}</h3>
 					<button class="icon-button">
@@ -62,7 +106,6 @@ function make_crypto_card(info, date = new Date()) {
 	return html;
 }
 
-const CRYPTO_API = "https://api.coingecko.com/api/v3/";
 async function fetch_crypto_info() {
 	const res = await fetch(CRYPTO_API + "coins/markets?vs_currency=usd", {
 		mode: "cors", // no-cors, *cors, same-origin
@@ -103,7 +146,6 @@ function filter_crypto(event) {
 	);
 	add_crypto_charts(filtered);
 }
-var CRYPTO_INFOS;
 fetch_crypto_info().then((d) => {
 	CRYPTO_INFOS = d;
 	add_crypto_charts(CRYPTO_INFOS);
