@@ -1,0 +1,86 @@
+:root {
+	--solution-color: pink;
+	--solution-border-color: red;
+	--solution-header-color: color-mix(
+		in srgb,
+		var(--solution-color),
+		var(--solution-border-color)
+	);
+}
+
+.sol,
+.solution {
+	background-color: var(--solution-color);
+	border: 0.25rem solid var(--solution-border-color);
+}
+
+/* div ~ p { */
+/* 	display: inline-block; */
+/* } */
+
+.sol {
+	display: inline-block;
+	border-radius: 2rem;
+	margin: 0.1rem 0.5rem;
+	padding: 0.3rem 0.5rem;
+}
+
+.sol::before {
+	/* opacity: 25%; */
+	/* position: absolute;; */
+	background-color: var(--solution-border-color);
+	border-radius: 2rem 0 0 2rem;
+	color: white;
+	content: "S";
+	left: -10px;
+	margin-right: -10px;
+	padding: 0.5rem;
+	pointer-events: none;
+	position: relative;
+	font-family: "CMUSansSerifDemiCondensedDemiCondensed", sans-serif;
+	font-weight: bold;
+}
+
+.sol p {
+	display: inline;
+}
+
+:root {
+	counter-reset: solution-counter 0;
+}
+
+.solution {
+	padding: 1rem;
+	border-radius: 0.5rem;
+	counter-increment: solution-counter 1;
+}
+
+.solution::before {
+	content: "Solution";
+	color: white;
+	/* outline: 0.25rem solid var(--solution-border-color); */
+	/* border: 0.25rem solid blue; */
+	background-color: var(--solution-border-color);
+	border-radius: 0.25rem 0 0.5rem 0;
+	/* content: "Solution " counter(solution-counter) ":"; */
+	font-weight: bold;
+	font-family: "CMUSansSerifDemiCondensedDemiCondensed", sans-serif;
+	position: relative;
+	top: -15px;
+	left: -1rem;
+	padding: 0.25rem;
+}
+
+li > p {
+	display: inline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "CMUSansSerifDemiCondensedDemiCondensed", sans-serif;
+	font-weight: bold;
+}
